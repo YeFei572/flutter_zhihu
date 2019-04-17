@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_zhihu/global_config.dart';
 import 'package:flutter_zhihu/home/home_page.dart';
 import 'package:flutter_zhihu/idea/idea_page.dart';
@@ -78,6 +79,9 @@ class _IndexState extends State<Index> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+
+    // 初始化页面 width=750; height=1334;
+    ScreenUtil.instance = ScreenUtil(width: 375, height: 812)..init(context);
     final BottomNavigationBar bottomNavigationBar = new BottomNavigationBar(
       items: _navigationViews
         .map((NavigationIconView navigationIconView) => navigationIconView.item).toList(),
