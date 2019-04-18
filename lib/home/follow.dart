@@ -58,7 +58,7 @@ class _FollowState extends State<Follow> {
     }
     return Container(
       color: GlobalConfig.cardBackgroundColor,
-      margin: EdgeInsets.only(top: ScreenUtil().setWidth(5), bottom: 5),
+      margin: EdgeInsets.only(top: ScreenUtil().setWidth(5), bottom: ScreenUtil().setWidth(5)),
       child: FlatButton(
         onPressed: () {
           Navigator.of(context).push(
@@ -67,6 +67,31 @@ class _FollowState extends State<Follow> {
             })
           );
         },
+        child: Column(
+          children: <Widget>[
+            Container(
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    child: CircleAvatar(
+                      backgroundImage: new NetworkImage(article.headUrl),
+                      radius: ScreenUtil().setWidth(11),
+                    ),
+                  ),
+                   new Text("  " + article.user + " " + article.action + " · " + article.time, style: new TextStyle(color: GlobalConfig.fontColor))
+                ],
+              ),
+              padding: EdgeInsets.only(top: ScreenUtil().setWidth(10)),
+            ),
+            Container(
+              child: Text(
+                article.title,
+                style: new TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0, height: 1.3, color: GlobalConfig.dark == true? Colors.white70 : Colors.black)              ),
+              margin: EdgeInsets.only(top: ScreenUtil().setWidth(6),bottom:ScreenUtil().setWidth(2)),
+              alignment: Alignment.topLeft
+            )
+          ],
+        ),
       ),
     );
   }
@@ -74,7 +99,11 @@ class _FollowState extends State<Follow> {
   @override
   Widget build(BuildContext context) {
     return Container(
-       child: widget.child,
+       child: Column(
+         children: <Widget>[
+           wordsCard(articleList[0])
+         ],
+       )
     );
   }
 }
