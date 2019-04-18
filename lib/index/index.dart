@@ -86,7 +86,7 @@ class _IndexState extends State<Index> with TickerProviderStateMixin {
       items: _navigationViews
         .map((NavigationIconView navigationIconView) => navigationIconView.item).toList(),
       currentIndex: _currentIndex,
-      fixedColor: Colors.blue,
+      fixedColor: Colors.green,
       type: BottomNavigationBarType.fixed,
       onTap: (int index) {
         setState(() {
